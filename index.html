@@ -1,65 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="">
-    <title>app</title>
+  <title>Ponovo</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@100;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Permanent+Marker&family=Poppins:wght@100;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="modal fade" id="edit-Services" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                    <label for="Service-id" class="col-form-label">Id:</label>
+                    <input type="text" class="form-control" id="Service-id">
+                  </div>
+                <div class="mb-3">
+                  <label for="Service-name" class="col-form-label">Name:</label>
+                  <input type="text" class="form-control" id="Service-name">
+                </div>
+                <div class="mb-3">
+                    <label for="Service-price" class="col-form-label">Price:</label>
+                    <input type="number" class="form-control" id="Service-price">
+                  </div>
+                <div class="mb-3">
+                  <label for="Service-image" class="col-form-label">Photo:</label>
+                  <input type="text" class="form-control" id="Service-image">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="editServices()">Send message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar">  
+        <div class="logo">  
+         <h1>Imana</h1>  
+        </div>  
+        <div class="nav__links">  
+         <a href="#home" class="active nav__link">Home</a>  
+         <a href="#about" class="active nav__link">About</a>  
+         <button type="button" class="butoncic nav__link" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add new Service</button> 
+        </div>  
+    </div>  
+    <div id="home" class="section">  
+        <h1>Home</h1>  
+    </div>  
+    <div id="about" class="section aa">  
         <div class="container">
             <div class="row" id="services-row">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1613966802194-d46a163af70d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFrZXVwJTIwYXJ0aXN0fGVufDB8fDB8fA%3D%3D&w=1000&q=80" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+    </div>  
+    <div id="contact" class="section">  
+        <h1>Contact</h1>  
+    </div>  
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add service</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+              <form>
                 <div class="mb-3">
-                    <label for="Services-id" class="col-form-label">Id:</label>
-                    <input type="text" class="form-control" id="Service-id" disabled>
-                    </div>
-                <div class="mb-3">
-                    <label for="Services-name" class="col-form-label">Name:</label>
-                    <input type="text" class="form-control" id="Service-name">
+                  <label for="todo-name" class="col-form-label">Service name:</label>
+                  <input type="text" class="form-control" id="Service-id">
                 </div>
                 <div class="mb-3">
-                    <label for="Services-image" class="col-form-label">Image:</label>
-                    <input type="text" class="form-control" id="Service-image">
+                  <label for="food-id" class="col-form-label">Id:</label>
+                  <input type="text" class="form-control" id="Service-name" disabled>
                 </div>
-                <div class="mb-3">
-                    <label for="Services-price" class="col-form-label">Price:</label>
-                    <input type="number" class="form-control" id="Service-price">
-                    </div>
-                </form>
+              <div class="mb-3">
+                <label for="food-image" class="col-form-label">Image:</label>
+                <input type="text" class="form-control" id="Service-image">
+              </div>
+              <div class="mb-3">
+                  <label for="food-price" class="col-form-label">Price:</label>
+                  <input type="number" class="form-control" id="Price-price">
+                </div>
+              </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="editServices()">Send message</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="addServices()">Submit</button>
             </div>
-            </div>
+          </div>
         </div>
+    </div>
+
+
+   
+
+
+    <footer class="site-footer">  
+        <div class="container">  
+            <div class="row">  
+            <div class="col-sm-12 col-md-6">  
+            <h6>About</h6>  
+            <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>  
+            </div>  
+            <div class="col-6 col-md-3">  
+            <h6>Categories</h6>  
+            <ul class="footer-links ">  
+            <li><a href="#">Haircut</a></li>  
+            <li><a href="#">Nails</a></li>  
+            <li><a href="#">Makeup</a></li>  
+            <li><a href="#">Solarium</a></li>  
+            <li><a href="#">Hair coloring</a></li>  
+            </ul>  
+            </div>  
+            <div class="col-6 col-md-3">  
+            <h6>Quick Links</h6>  
+            <ul class="footer-links">  
+            <li><a href="#">About Us</a></li>  
+            <li><a href="#">Contact Us</a></li>  
+            <li><a href="#">Contribute</a></li>  
+            <li><a href="#">Privacy Policy</a></li>  
+            <li><a href="#">Sitemap</a></li>  
+            </ul>  
+            </div>  
+            </div>  
+            <hr class="small">  
+        </div>  
+        <div class="container">  
+            <div class="row">  
+            <div class="col-md-8 col-sm-6 col-12">  
+            <p class="copyright-text">Copyright © 2022 All Rights Reserved by  
+            <a href="#"><span class="logo">Imana.</span></a>  
+            </p>  
+            </div>  
+            <div class="col-md-4 col-sm-6 col-12">  
+            <ul class="social-icons">  
+            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>  
+            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>  
+            <li><a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a></li>  
+            <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>  
+            </ul>  
+            </div>  
+            </div>  
+        </div>  
+      </footer>     
 </body>
 <script src="./script.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>  
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>  
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>  
 </html>

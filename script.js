@@ -23,7 +23,10 @@ const renderServices = (Services) => {
             <div class="card-body">
                 <h5 class="card-title">${Service.name}</h5>
                 <p class="card-text">${Service.price} KM</p>
-                <button type="button" onclick="fillEditData(${Service.id})" class="btn btn-primary">Edit</a>
+                <button type="button" class="btn btn-primary" onclick="completeServices(${Service.id})">Complete</button>
+                <button type="button" class="btn btn-primary" onclick="fillEditData(${Service.id})" data-bs-toggle="modal" data-bs-target="#edit-Services" data-bs-whatever="@getbootstrap">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteServices(${Service.id})">Delete</button>
+                <span class="badge bg-${Service.isCompleted ? 'success' : 'danger'}">${Service.isCompleted ? 'Completed' : 'Active'}</span>
             </div>
         </div>`;
     });
@@ -31,7 +34,6 @@ const renderServices = (Services) => {
     servicesRow.innerHTML = resultServicesHtml;
 
 }    
-
 
 const fillEditData = (ServiceId) => {
     const Service = Services.find(Service => Service.id === ServiceId);
@@ -58,18 +60,23 @@ const editServices = () => {
         body: JSON.stringify({
             id: ServiceFormId,
             name: ServiceFormName,
-            photoUrl: ServiceFormImage,
-            price: ServiceFormPrice
+            price: ServiceFormPrice,
+            photoUrl: ServiceFormImage
         })
     })
     .then(res => {
         if(!res.ok)
         {
-            alert('Error');
+            console.log(`Status code: ${res.status}`);
+
+            let kartica = document.getElementById(ServiceFormId);
+            kartica.children[0].src = ServiceFormImage;
+            kartica.children[1].children[0].innerHTML = ServiceFormName;
+            kartica.children[1].children[1].innerHTML = ServiceFormPrice;
         }
     })
 }
-/*
+
 const addServices = () => {
     //const todoName = document.getElementById('todo-name').value;
     const ServicesId = document.getElementById('Services-id').value;
@@ -99,4 +106,4 @@ const deleteServices = (id) => {
     .then(res => {
         console.log(res);
     })
-}    */
+}   
