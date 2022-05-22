@@ -75,12 +75,13 @@
   justify-content: center;
 }
 .card-body {
-  text-align: left;
+  text-align: center;
   justify-content: center;
   font-size: 20px;
-  width: 250px;
+  width: 213px;
   padding: 5px;
-  color: white;
+  color: black;
+  background-color: white;
 }
 .card img {
   /*border-radius: 10px;*/
@@ -242,3 +243,87 @@
      flex: 2 0px;
    }
  }
+
+
+
+
+ /*Mobitel*/
+
+@media only screen and (max-width:400px) {
+  .row {
+      flex-wrap: wrap;
+  }
+}
+
+
+/*Tablet*/
+
+@media only screen and (min-width: 691px) and (max-width:960px) {
+  .slike {
+      background-color: black;
+  }
+  .slika {
+      width: 50%;
+      padding: 10px;
+      background-color: black;
+  }
+  .jedan {
+      order: 1;
+  }
+  .dva {
+      margin-left: auto;
+      margin-right: auto;
+      order: 2;
+  }
+  .slike {
+      order: 3;
+  }
+  .footer {
+      order: 4;
+  }
+}
+
+@media only screen and (min-width: 401px) and (max-width:690px) {
+  .slike {
+      background-color: black;
+  }
+  .slika {
+      width: 45%;
+      padding: 10px;
+  }
+  .slika img {
+      width: 90%;
+  }
+  .jedan {
+      order: 1;
+  }
+  .dva {
+      order: 2;
+  }
+  .tri {
+      order: 4;
+      margin-top: 10px;
+  }
+  .slike {
+      order: 3;
+  }
+  .footer {
+      order: 5;
+  }
+}
+
+
+/*Dekstop*/
+
+@media only screen and (min-width: 961px) {
+  .page {
+      width: 960px;
+      margin: 0px auto;
+  }
+  .slika4 {
+      display: none;
+  }
+  .slike {
+      height: auto;
+  }
+}
