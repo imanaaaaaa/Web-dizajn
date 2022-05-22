@@ -23,10 +23,12 @@ const renderServices = (Services) => {
             <div class="card-body">
                 <h5 class="card-title">${Service.name}</h5>
                 <p class="card-text">${Service.price} KM</p>
-                <button type="button" class="btn btn-primary" onclick="completeServices(${Service.id})">Complete</button>
-                <button type="button" class="btn btn-primary" onclick="fillEditData(${Service.id})" data-bs-toggle="modal" data-bs-target="#edit-Services" data-bs-whatever="@getbootstrap">Edit</button>
-                <button type="button" class="btn btn-danger" onclick="deleteServices(${Service.id})">Delete</button>
-                <span class="badge bg-${Service.isCompleted ? 'success' : 'danger'}">${Service.isCompleted ? 'Completed' : 'Active'}</span>
+                <div class="buttoni">
+                    <button type="button" class="btn btn-primary" style="margin:5px 5px 5px 0px; background-color:purple" onclick="completeServices(${Service.id})">Complete</button>
+                    <button type="button" class="btn btn-primary" style="margin:5px 5px 5px 0px" onclick="fillEditData(${Service.id})" data-bs-toggle="modal" data-bs-target="#edit-Services" data-bs-whatever="@getbootstrap">Edit</button>
+                    <button type="button" class="btn btn-danger" style="margin:5px 5px 5px 0px" onclick="deleteServices(${Service.id})">Delete</button>
+                    <span class="badge bg-${Service.isCompleted ? 'success' : 'danger'}">${Service.isCompleted ? 'Completed' : 'Active'}</span>
+                </div>
             </div>
         </div>`;
     });
