@@ -80,7 +80,6 @@ const editServices = () => {
 }
 
 const addServices = () => {
-    //const todoName = document.getElementById('todo-name').value;
     const ServicesId = document.getElementById('Services-id').value;
     const ServicesName = document.getElementById('Services-name').value;
     const ServicesImage = document.getElementById('Services-image').value;
